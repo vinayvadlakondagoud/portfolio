@@ -1,0 +1,174 @@
+/* eslint-disable no-unused-vars */
+import { SOCIAL_LINKS } from "../../data/data";
+import { motion } from "framer-motion";
+import { Send, Mail, Copy, Check, MessageCircle } from "lucide-react";
+import { useState } from "react";
+
+const EMAIL = "thevinayjpp@gmail.com";
+
+const Contact = () => {
+  const [copied, setCopied] = useState(false);
+
+  const handleEmailClick = (e) => {
+    e.preventDefault();
+
+    const subject = encodeURIComponent("Collaboration Opportunity");
+    const body = encodeURIComponent(
+      "Hi Vinay,\n\nI came across your portfolio and would love to connect."
+    );
+
+    const isAndroid = /android/i.test(navigator.userAgent);
+
+    if (isAndroid) {
+      // Android Gmail App (cannot force new tab — opens app)
+      const gmailIntent = `intent://compose?to=${EMAIL}&subject=${subject}&body=${body}#Intent;scheme=mailto;package=com.google.android.gm;end`;
+      window.location.href = gmailIntent;
+    } else {
+      // Desktop & iOS → open in NEW TAB
+      const gmailWebUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}&su=${subject}&body=${body}`;
+      window.open(gmailWebUrl, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleCopyEmail = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+const WHATSAPP_NUMBER = "918850003165";
+
+
+  const handleWhatsAppClick = () => {
+    const message = encodeURIComponent("Hi Vinay, I'd like to discuss a project.");
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, "_blank");
+  };
+
+  return (
+    <section id="contact" className="relative py-16 md:py-20 px-4 z-10 overflow-hidden">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Section Title */}
+        <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-display tracking-tight">
+          <span className="gradient-text">Let's Connect</span>
+        </h2>
+        <div className="section-divider" />
+
+        {/* Card */}
+        <div className="relative card-base p-6 md:p-12 rounded-3xl">
+          {/* Icon */}
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 120, delay: 0.2 }}
+            className="inline-flex p-6 bg-blue-950/30 rounded-full mb-8 border border-blue-500/15 shadow-[0_0_30px_rgba(59,130,246,0.1)]"
+          >
+            <Send className="w-12 h-12 text-blue-300" />
+          </motion.div>
+
+          {/* Text */}
+          <p className="text-xl text-gray-400 mb-12 leading-relaxed font-body">
+            I’m always open to exciting opportunities, freelance work, and
+            meaningful collaborations. <br />
+            Let’s build something impactful together.
+          </p>
+
+          {/* Social links */}
+          <div className="flex justify-center gap-6 mb-12 flex-wrap">
+            {SOCIAL_LINKS.map((link, idx) => {
+              const Icon = link.icon;
+              return (
+                <motion.a
+                  key={idx}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  whileHover={{ scale: 1.15, y: -4 }}
+                  whileTap={{ scale: 0.95 }}
+                  className="group p-4 card-base rounded-2xl hover:border-blue-400/25 transition-all"
+                  aria-label={link.label}
+                >
+                  <Icon className="w-6 h-6 text-gray-400 group-hover:text-blue-300 transition-colors" />
+                </motion.a>
+              );
+            })}
+          </div>
+
+          {/* CTA + Copy Email */}
+          <div className="flex items-center justify-center gap-3 mb-6">
+            <span className="text-gray-300 text-lg font-tech tracking-wider">
+              {EMAIL}
+            </span>
+
+            <motion.button
+              onClick={handleCopyEmail}
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="
+      p-2
+      rounded-full
+      backdrop-blur-xl
+      bg-white/10
+      border border-white/20
+      hover:bg-white/20
+      transition-colors
+    "
+              aria-label="Copy email address"
+            >
+              {copied ? (
+                <Check className="w-4 h-4 text-green-400" />
+              ) : (
+                <Copy className="w-4 h-4 text-gray-300" />
+              )}
+            </motion.button>
+          </div>
+
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <motion.button
+              onClick={handleEmailClick}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(255, 255, 255, 0.15)",
+              }}
+              whileTap={{ scale: 0.95 }}
+
+              className="
+                inline-flex items-center gap-3 px-8 py-4
+                bg-linear-to-r from-blue-600 to-indigo-600
+                rounded-full font-semibold text-lg text-white
+                transition-all font-tech uppercase tracking-wide
+                w-full sm:w-auto justify-center
+              "
+            >
+              <Mail className="w-5 h-5" />
+              Email Me
+            </motion.button>
+
+            <motion.button
+              onClick={handleWhatsAppClick}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 0 30px rgba(37, 211, 102, 0.2)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="
+                inline-flex items-center gap-3 px-8 py-4
+                bg-linear-to-r from-[#128C7E] to-[#25D366]
+                rounded-full font-semibold text-lg text-white
+                transition-all font-tech uppercase tracking-wide
+                w-full sm:w-auto justify-center shadow-lg shadow-[#25D366]/15 cursor-pointer
+              "
+            >
+              <MessageCircle className="w-5 h-5" />
+              WhatsApp
+            </motion.button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Contact;

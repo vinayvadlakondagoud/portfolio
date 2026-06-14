@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-spotlight: spotlight 2s ease .75s 1 forwards;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-mesh: mesh 15s ease-in-out infinite alternate;
+  --font-display: "Orbitron", sans-serif;
+  --font-tech: "Rajdhani", sans-serif;
+  --font-body: "Space Grotesk", sans-serif;
+
+  @keyframes spotlight {
+    0% { opacity: 0; transform: translate(-72%, -62%) scale(0.5); }
+    100% { opacity: 1; transform: translate(-50%, -40%) scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-16px); }
+  }
+
+  @keyframes mesh {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -20px) scale(1.05); }
+    66% { transform: translate(-20px, 15px) scale(0.95); }
+    100% { transform: translate(10px, -10px) scale(1.02); }
+  }
+
+}
+
+::selection {
+  background-color: #3b82f6;
+  color: white;
+}
+
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+html {
+  font-size: 17px;
+}
+
+@media (max-width: 768px) {
+  html { font-size: 15px; }
+}
+
+body {
+  font-family: var(--font-body);
+  background: #060a14;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Gradient Text --- */
+.gradient-text {
+  background: linear-gradient(135deg, #60a5fa 0%, #818cf8 25%, #c084fc 50%, #818cf8 75%, #60a5fa 100%);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 8s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+/* --- Subtle Grain --- */
+.grain-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.012;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* --- Card Base --- */
+.card-base {
+  background: linear-gradient(135deg, rgba(15, 21, 37, 0.92), rgba(20, 28, 50, 0.85));
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(59, 130, 246, 0.06);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.card-base:hover {
+  border-color: rgba(59, 130, 246, 0.15);
+  box-shadow: 0 12px 40px rgba(59, 130, 246, 0.06);
+  transform: translateY(-2px);
+}
+
+/* --- Button Primary --- */
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6, #6366f1);
+  color: white;
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.875rem 2.25rem;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 24px rgba(59, 130, 246, 0.15);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 8px 40px rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 12px rgba(59, 130, 246, 0.2);
+}
+
+/* --- Button Ghost --- */
+.btn-ghost {
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #93c5fd;
+  font-family: var(--font-tech);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  border-radius: 9999px;
+  padding: 0.875rem 2.25rem;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  background: transparent;
+}
+
+.btn-ghost:hover {
+  background: rgba(59, 130, 246, 0.06);
+  border-color: rgba(59, 130, 246, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* --- Vignette --- */
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 9997;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 45%, rgba(4, 6, 12, 0.65) 100%);
+}
+
+/* --- Section divider --- */
+.section-divider {
+  width: 100px;
+  height: 2px;
+  margin: 0 auto;
+  background: linear-gradient(90deg, transparent, #3b82f6, #6366f1, transparent);
+  border-radius: 2px;
+  margin-bottom: 2.5rem;
+}
+
