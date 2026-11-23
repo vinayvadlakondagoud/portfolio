@@ -5,37 +5,37 @@ import olpImg from "../assets/olp.png";
 
 export const HERO_ROLES = [
   "Full-Stack Developer",
-  "React & Node.js Engineer",
-  "Java Spring Boot Dev",
+  "React & Spring Boot Engineer",
+  "Java Full-Stack Developer",
   "NLP Enthusiast"
 ];
 
 export const NAV_ITEMS = ["Nest", "Story", "Forge", "Lab", "Signal"];
 
 export const SKILL_BARS = [
-  { name: "React / Next.js", level: 88 },
+  { name: "React / Next.js", level: 90 },
+  { name: "Java / Spring Boot", level: 86 },
   { name: "Node.js / Express", level: 85 },
   { name: "Python (Flask / FastAPI)", level: 82 },
-  { name: "Java / Spring Boot", level: 72 },
-  { name: "SQL / MongoDB", level: 80 },
-  { name: "Docker / Git", level: 75 },
+  { name: "SQL / MongoDB", level: 84 },
+  { name: "Docker / Git / CI-CD", level: 78 },
 ];
 
 export const SKILLS = {
-  Languages: ["Java", "Python", "JavaScript (ES6+)"],
-  Frontend: ["React.js", "Next.js", "HTML5", "CSS3"],
-  Backend: ["Node.js (Express)", "FastAPI", "Flask", "Spring Boot"],
+  Languages: ["Java", "Python", "JavaScript (ES6+)", "SQL", "HTML5", "CSS3"],
+  Frontend: ["React.js", "Next.js", "Tailwind CSS", "HTML5", "CSS3"],
+  Backend: ["Node.js (Express)", "Spring Boot", "FastAPI", "Flask"],
   Databases: ["MySQL", "PostgreSQL", "MongoDB"],
   Tools: ["Git", "GitHub", "Docker", "Postman", "VS Code", "Render"],
-  Competencies: ["REST API Design", "NLP (TF-IDF)", "OTP Auth", "CRUD Architecture", "Agile"]
+  Competencies: ["REST APIs", "JWT", "Role-Based Access Control", "Razorpay", "WebSocket", "CI/CD", "NLP (TF-IDF)", "Agile"]
 };
 
 export const FUN_FACTS = [
-  "Shipped 5 production-grade full-stack projects in a single academic year",
-  "Applied NLP (TF-IDF + cosine similarity) inside a production product",
-  "Built OTP authentication without third-party libraries",
-  "Delivered remote internship at Aivariant on time and to spec",
-  "End-to-end solutions from responsive frontends to secure backends"
+  "Completed two software development internships across EdTech, hiring and rental products",
+  "Built a full-stack LMS with a 28-table schema and 90+ Spring Boot endpoints",
+  "Integrated Razorpay payments with HMAC-SHA256 verification",
+  "Applied NLP (TF-IDF + cosine similarity) with 85%+ screening accuracy",
+  "Fixed 15+ production issues across role-based dashboards"
 ];
 
 export const PROJECTS = [
@@ -66,10 +66,10 @@ export const PROJECTS = [
   {
     title: "Movies Web Application",
     description:
-      "MERN stack platform to explore, review, and manage movies. Features real-time search, multi-industry filtering (Bollywood/Hollywood/Tollywood), YouTube trailer integration, and a full admin dashboard with analytics.",
-    tech: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+      "React SPA with search, genre filtering, trailers and cast details, and a persistent watchlist — backed by a custom Express/MongoDB REST API with 15+ endpoints. Optimised with React.memo and lazy loading for a 40% faster initial load.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "REST API"],
     type: "MERN · Full-Stack",
-    features: ["Genre/Industry Filters", "Ratings & Reviews", "Watchlist", "Admin Analytics"],
+    features: ["Search & Filters", "Trailers & Cast", "Watchlist", "15+ REST Endpoints"],
     gradient: "from-blue-600 to-indigo-600",
     liveDemo: "#",
     code: "https://github.com/vinayvadlakondagoud/moviesweb",
@@ -88,27 +88,27 @@ export const PROJECTS = [
     img: nmsImg
   },
   {
-    title: "Online Learning Platform (OLP)",
+    title: "LearnHub — Online Learning Platform",
     description:
-      "E-learning platform where students browse courses, follow lessons, take quizzes and review results. Includes protected routes, a personal dashboard and profile, plus role-ready areas for instructors and admins. Built with React 19, Tailwind CSS, Framer Motion and Axios.",
-    tech: ["React 19", "Tailwind CSS", "Framer Motion", "React Router", "Axios"],
-    type: "Frontend · E-Learning",
-    features: ["Course Catalog", "Quizzes & Results", "Student Dashboard", "Protected Routes"],
-    gradient: "from-blue-600 to-indigo-600",
+      "Full-stack LMS with 3 user roles, a 28-table MySQL schema and 90+ JWT-protected Spring Boot endpoints. WebRTC live classes with WebSocket signalling, course recommendations, Razorpay payments with HMAC verification, and auto-graded assessments with PDF certificates.",
+    tech: ["React", "Spring Boot", "MySQL", "WebSocket", "Razorpay"],
+    type: "Full-Stack · EdTech",
+    features: ["90+ REST APIs", "WebRTC Live Classes", "Razorpay Payments", "PDF Certificates"],
+    gradient: "from-indigo-600 to-blue-600",
     liveDemo: "#",
-    code: "https://github.com/vinayvadlakondagoud",
+    code: "https://github.com/vinayvadlakondagoud/learnhub",
     img: olpImg
   },
   {
     title: "Resume Screening & Candidate Ranking",
     description:
-      "Automates resume screening — upload a job description, submit resumes (PDF/DOC/DOCX), and get each candidate scored 0–100 with ranked results, exportable to CSV or Excel. Containerised with Docker, deployed on Render.",
-    tech: ["Next.js 14", "FastAPI", "PostgreSQL", "Docker", "scikit-learn"],
+      "AI screening tool that parses resumes and scores them against job descriptions using TF-IDF and cosine similarity with 85%+ accuracy. Ranks candidates on a dashboard, handles bulk uploads of 100+ resumes, exports to CSV/Excel, and runs in Docker on Render with CI/CD.",
+    tech: ["Next.js", "FastAPI", "PostgreSQL", "NLP", "Docker"],
     type: "NLP · Full-Stack",
-    features: ["TF-IDF Scoring", "Bulk Upload", "CSV/Excel Export", "Async Processing"],
+    features: ["TF-IDF Scoring", "Bulk Upload", "CSV/Excel Export", "CI/CD on Render"],
     gradient: "from-blue-600 to-indigo-600",
     liveDemo: "https://resume-screening-frontend-1gcw.onrender.com",
-    code: "https://github.com/vinayvadlakondagoud/resume-screening",
+    code: "https://github.com/vinayvadlakondagoud/Resume_Screening",
     img: "/resume.png"
   }
 ];
@@ -176,11 +176,21 @@ export const JOURNEY = [
   {
     year: "2025",
     title: "Python Developer Intern @ Aivariant",
-    description: "Built a full-stack Rental Management System (Flask + MySQL) with 10+ RESTful endpoints and OTP-based auth during a 10-week remote engagement."
+    description: "Built a full-stack Rental Management System (Flask + MySQL) with 10+ REST APIs, OTP auth and role-based controls, handling 500+ monthly transactions in a 10-week remote sprint."
   },
   {
     year: "2026",
-    title: "Java Full Stack Certification",
-    description: "Enrolled in IT Vedant's intensive Java Full Stack Developer program covering React, Spring Boot, and MySQL with capstone delivery."
+    title: "B.Sc. IT — SIES College",
+    description: "Completed Bachelor of Science in Information Technology at SIES College of Arts, Science and Commerce, Mumbai."
+  },
+  {
+    year: "2026",
+    title: "Java Full Stack Intern @ Great Hire",
+    description: "Delivered features across an AI hiring platform and tuition LMS (React, Node.js, MongoDB, Razorpay) for 6 roles; fixed 15+ production issues and built tutor settlement workflows."
+  },
+  {
+    year: "2026",
+    title: "Full-Stack Certifications",
+    description: "Completed IBM Skills Network / IT Vedant Java full-stack program (Aug) and Skill India NSDC certification (Nov)."
   }
 ];

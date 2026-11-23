@@ -63,17 +63,17 @@ const About = () => {
           <h3 className="text-3xl font-bold leading-tight font-tech">
             Full-Stack Developer & <br />
             <span className="gradient-text">
-              B.Sc. IT Student
+              B.Sc. IT Graduate
             </span>
           </h3>
 
-          {/* Currently learning badge */}
+          {/* Status badge */}
           <div className="flex items-center gap-3">
             <span className="relative inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium font-tech tracking-wide bg-blue-950/30 border border-blue-500/15 text-blue-300 backdrop-blur-xl shadow-[0_0_15px_rgba(59,130,246,0.1)]"
             >
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-blue-400 animate-ping opacity-75"></span>
               <span className="absolute left-2 w-2.5 h-2.5 rounded-full bg-blue-300"></span>
-              <span className="pl-4"><Sparkles className="w-3 h-3 inline mr-1 -mt-0.5" />Java Full Stack Cert. · IT Vedant</span>
+              <span className="pl-4"><Sparkles className="w-3 h-3 inline mr-1 -mt-0.5" />2 Internships · 6 Projects</span>
             </span>
           </div>
 
@@ -83,10 +83,9 @@ const About = () => {
             <span className="text-gray-100 font-semibold">
               Full-Stack Developer
             </span>{" "}
-            with hands-on experience building <b className="text-blue-300">production-grade</b> web applications using{" "}
-            <b>React, Node.js, Flask, and Spring Boot</b>. 
-            I architected a full-stack Rental Management System during my internship at{" "}
-            <i>Aivariant</i> and have shipped <b className="text-indigo-400">5 projects</b> across diverse tech stacks.
+            with two software development internships at <i>Great Hire</i> and <i>Aivariant</i>, building{" "}
+            <b className="text-blue-300">production-grade</b> applications with <b>React, Spring Boot, Node.js and Python</b>.
+            I've shipped <b className="text-indigo-400">6 full-stack projects</b> across EdTech, hiring and rental products.
           </p>
 
           {/* Focus cards */}
@@ -96,7 +95,7 @@ const About = () => {
                 Frontend & UI
               </h4>
               <p className="text-sm text-gray-400 leading-relaxed font-body">
-                Building responsive SPAs with React, Next.js, and optimised component architecture.
+                Building responsive SPAs with React, Next.js and Tailwind CSS, with optimised component architecture.
               </p>
             </div>
 
@@ -105,7 +104,7 @@ const About = () => {
                 Backend & APIs
               </h4>
               <p className="text-sm text-gray-400 leading-relaxed font-body">
-                Designing secure REST APIs with Express, FastAPI, Flask, and Spring Boot with auth & RBAC.
+                Designing secure REST APIs with Express, FastAPI and Spring Boot — JWT auth, RBAC, WebSocket and Razorpay.
               </p>
             </div>
           </div>
@@ -121,8 +120,8 @@ const About = () => {
           {/* Mini stats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
             <div className="card-base rounded-xl p-4 text-center">
-              <h4 className="text-2xl font-bold font-display gradient-text">10-Week</h4>
-              <p className="text-xs text-gray-500 mt-1 uppercase tracking-wider font-tech">Internship Delivered</p>
+              <h4 className="text-2xl font-bold font-display gradient-text">2</h4>
+              <p className="text-xs text-gray-500 mt-1 uppercase tracking-wider font-tech">Internships Completed</p>
             </div>
 
             <div className="card-base rounded-xl p-4 text-center">
@@ -154,11 +153,15 @@ const About = () => {
           <div className="space-y-2 text-sm pt-2 text-gray-400 font-tech">
             <p>
               <span className="text-blue-300 font-semibold">Languages:</span>{" "}
-              Java, Python, JavaScript (ES6+)
+              Java, Python, JavaScript (ES6+), SQL, HTML5, CSS3
             </p>
             <p>
               <span className="text-indigo-300 font-semibold">Databases:</span>{" "}
               MySQL, PostgreSQL, MongoDB
+            </p>
+            <p>
+              <span className="text-green-300 font-semibold">Core:</span>{" "}
+              REST APIs, JWT, RBAC, Razorpay, WebSocket, CI/CD
             </p>
             <p>
               <span className="text-gray-300 font-semibold">Fun Facts:</span>{" "}
