@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from "react";
 import { PROJECTS } from "../../data/data";
 import { motion } from "framer-motion";

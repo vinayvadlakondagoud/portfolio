@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { SOCIAL_LINKS } from "../../data/data";
 import { motion } from "framer-motion";
 import { Send, Mail, Copy, Check, MessageCircle } from "lucide-react";

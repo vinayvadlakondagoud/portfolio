@@ -13,27 +13,25 @@ const greetings = [
 
 const Preloader = ({ onComplete }) => {
   const [index, setIndex] = useState(0);
-  const [dimension, setDimension] = useState({ width: 0, height: 0 });
-
-  useEffect(() => {
-    setDimension({ width: window.innerWidth, height: window.innerHeight });
-  }, []);
-
   const [exit, setExit] = useState(false);
 
   useEffect(() => {
     if (index === greetings.length - 1) {
+      let revealTimer;
       const timeout = setTimeout(() => {
         setExit(true);
-        setTimeout(onComplete, 200); // Trigger site reveal almost immediately after zoom starts
-      }, 2000); 
-      return () => clearTimeout(timeout);
+        // Trigger site reveal almost immediately after zoom starts.
+        revealTimer = setTimeout(onComplete, 200);
+      }, 2000);
+
+      return () => {
+        clearTimeout(timeout);
+        clearTimeout(revealTimer);
+      };
     }
 
     const timeout = setTimeout(
-      () => {
-        setIndex((prev) => prev + 1);
-      },
+      () => setIndex((prev) => prev + 1),
       index === 0 ? 1000 : 180
     );
 

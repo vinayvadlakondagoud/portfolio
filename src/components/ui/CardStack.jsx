@@ -1,7 +1,5 @@
- 
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
-import { SquareArrowOutUpRight } from "lucide-react";
 import { cn } from "../../lib/utils"; // Importing utility
 
 function wrapIndex(n, len) {
@@ -53,24 +51,23 @@ export const CardStack = ({
   const reduceMotion = useReducedMotion();
   const len = items.length;
 
-  const [active, setActive] = useState(() => wrapIndex(initialIndex, len));
+  const [active, setActive] = useState(initialIndex);
   const [hovering, setHovering] = useState(false);
 
-  useEffect(() => {
-    setActive((a) => wrapIndex(a, len));
-  }, [len]);
+  // Derive a valid index instead of mutating state in an effect when `len` changes.
+  const activeIndex = wrapIndex(active, len);
 
   useEffect(() => {
     if (!len) return;
-    onChangeIndex?.(active, items[active]);
-  }, [active, items, len, onChangeIndex]);
+    onChangeIndex?.(activeIndex, items[activeIndex]);
+  }, [activeIndex, items, len, onChangeIndex]);
 
   const maxOffset = Math.max(0, Math.floor(maxVisible / 2));
   const cardSpacing = Math.max(10, Math.round(cardWidth * (1 - overlap)));
   const stepDeg = maxOffset > 0 ? spreadDeg / maxOffset : 0;
 
-  const canGoPrev = loop || active > 0;
-  const canGoNext = loop || active < len - 1;
+  const canGoPrev = loop || activeIndex > 0;
+  const canGoNext = loop || activeIndex < len - 1;
 
   const prev = useCallback(() => {
     if (!len) return;
@@ -96,7 +93,7 @@ export const CardStack = ({
     if (pauseOnHover && hovering) return;
 
     const id = setInterval(() => {
-      if (loop || active < len - 1) next();
+      if (loop || activeIndex < len - 1) next();
     }, Math.max(700, intervalMs));
 
     return () => clearInterval(id);
@@ -108,13 +105,11 @@ export const CardStack = ({
     reduceMotion,
     len,
     loop,
-    active,
+    activeIndex,
     next,
   ]);
 
   if (!len) return null;
-
-  const activeItem = items[active];
 
   return (
     <div
@@ -142,7 +137,7 @@ export const CardStack = ({
         <div className="relative h-full w-full flex items-end justify-center">
             <AnimatePresence initial={false}>
             {items.map((item, i) => {
-                const off = signedOffset(i, active, len, loop);
+                const off = signedOffset(i, activeIndex, len, loop);
                 const abs = Math.abs(off);
                 const visible = abs <= maxOffset;
 
@@ -241,7 +236,7 @@ export const CardStack = ({
         <div className="mt-8 flex items-center justify-center gap-3">
           <div className="flex items-center gap-2">
             {items.map((it, idx) => {
-              const on = idx === active;
+              const on = idx === activeIndex;
               return (
                 <button
                   key={idx}

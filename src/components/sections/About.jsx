@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { motion } from "framer-motion";
 import { FUN_FACTS, SKILL_BARS } from "../../data/data";
 import JourneyTimeline from "./JourneyTimeline";

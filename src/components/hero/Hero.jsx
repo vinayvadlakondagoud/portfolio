@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown, Sparkles, Code2, Database, Server, Cpu } from "lucide-react";

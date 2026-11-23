@@ -1,4 +1,4 @@
-import { Suspense, lazy, useState, useEffect } from "react";
+import { Suspense, lazy, useState, useEffect, useCallback } from "react";
 import StarryBackground from "./components/background/StarryBackground";
 import Navbar from "./components/layout/Navbar";
 import Hero from "./components/hero/Hero";
@@ -19,17 +19,21 @@ const LoadingFallback = () => (
   </div>
 );
 
+// Module-level constant keeps the scroll-spy effect free of re-subscriptions.
+const SECTION_MAP = {
+  Nest: "home",
+  Story: "about",
+  Forge: "projects",
+  Lab: "services",
+  Signal: "contact",
+};
+
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [activeSection, setActiveSection] = useState("Nest");
 
-  const sectionMap = {
-    Nest: "home",
-    Story: "about",
-    Forge: "projects",
-    Lab: "services",
-    Signal: "contact",
-  };
+  // Stable identity so the Preloader's timers are not restarted on re-renders.
+  const handlePreloaderComplete = useCallback(() => setIsLoading(false), []);
 
   useEffect(() => {
     const observerOptions = {
@@ -42,8 +46,8 @@ const App = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           const sectionId = entry.target.id;
-          const activeKey = Object.keys(sectionMap).find(
-            (key) => sectionMap[key] === sectionId
+          const activeKey = Object.keys(SECTION_MAP).find(
+            (key) => SECTION_MAP[key] === sectionId
           );
           if (activeKey) {
             setActiveSection(activeKey);
@@ -57,7 +61,7 @@ const App = () => {
     // Function to attempt observation
     const observeSections = () => {
       let allFound = true;
-      Object.values(sectionMap).forEach((id) => {
+      Object.values(SECTION_MAP).forEach((id) => {
         const element = document.getElementById(id);
         if (element) {
           observer.observe(element);
@@ -88,7 +92,7 @@ const App = () => {
   }, []);
 
   const scrollToSection = (item) => {
-    const sectionId = sectionMap[item];
+    const sectionId = SECTION_MAP[item];
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -100,7 +104,7 @@ const App = () => {
       <div className="bg-[#080b16] text-white grain-overlay">
         <div className="vignette" />
         <StarryBackground />
-        <Preloader onComplete={() => setIsLoading(false)} />
+        <Preloader onComplete={handlePreloaderComplete} />
         <Navbar scrollToSection={scrollToSection} activeSection={activeSection} isLoaded={!isLoading} />
         <Hero scrollToSection={scrollToSection} isLoaded={!isLoading} />
         

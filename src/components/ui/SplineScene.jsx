@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Suspense, lazy } from 'react'
 
 // Use dynamic import for Spline to avoid heavy initial load
