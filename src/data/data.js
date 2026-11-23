@@ -1,4 +1,7 @@
 import { Code2, Server, Brain, Database, Github, Linkedin } from "lucide-react";
+import movieswebImg from "../assets/moviesweb.png";
+import nmsImg from "../assets/nms.png";
+import olpImg from "../assets/olp.png";
 
 export const HERO_ROLES = [
   "Full-Stack Developer",
@@ -70,7 +73,7 @@ export const PROJECTS = [
     gradient: "from-blue-600 to-indigo-600",
     liveDemo: "#",
     code: "https://github.com/vinayvadlakondagoud/moviesweb",
-    img: "/movie.png"
+    img: movieswebImg
   },
   {
     title: "Notes Management System",
@@ -82,7 +85,19 @@ export const PROJECTS = [
     gradient: "from-indigo-600 to-blue-600",
     liveDemo: "https://notesapp-g47d.onrender.com",
     code: "https://github.com/vinayvadlakondagoud/NotesApp",
-    img: "/Notes.png"
+    img: nmsImg
+  },
+  {
+    title: "Online Learning Platform (OLP)",
+    description:
+      "E-learning platform where students browse courses, follow lessons, take quizzes and review results. Includes protected routes, a personal dashboard and profile, plus role-ready areas for instructors and admins. Built with React 19, Tailwind CSS, Framer Motion and Axios.",
+    tech: ["React 19", "Tailwind CSS", "Framer Motion", "React Router", "Axios"],
+    type: "Frontend · E-Learning",
+    features: ["Course Catalog", "Quizzes & Results", "Student Dashboard", "Protected Routes"],
+    gradient: "from-blue-600 to-indigo-600",
+    liveDemo: "#",
+    code: "https://github.com/vinayvadlakondagoud",
+    img: olpImg
   },
   {
     title: "Resume Screening & Candidate Ranking",

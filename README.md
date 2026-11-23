@@ -1,6 +1,6 @@
-# Vinay Vadlakonda — Developer Portfolio
+# Vinay Vadlakonda — Portfolio
 
-A modern, high-performance 3D developer portfolio built with **React 19**, **Spline (3D)**, **Tailwind CSS v4**, and **Framer Motion**. Designed to showcase full-stack projects, technical skills, and professional journey with cinematic visual polish.
+A cinematic full-stack developer portfolio built with **React 19**, **Spline 3D**, **Tailwind CSS v4**, and **Framer Motion**. Showcases 6 projects, technical proficiencies, and professional journey through a dark-themed, mobile-responsive interface with smooth scroll, dynamic 3D visuals, and a refined blue/indigo/violet color grade.
 
 ## Features
 
@@ -55,6 +55,7 @@ src/
 | Hostel Management System | React, Node.js, Express, MySQL | ✅ |
 | Movies Web Application | React, Node.js, MongoDB, JWT | — |
 | Notes Management System | React, Node.js, MongoDB | ✅ |
+| Online Learning Platform (OLP) | React 19, Tailwind CSS, Framer Motion, Axios | — |
 
 ## Author
 
